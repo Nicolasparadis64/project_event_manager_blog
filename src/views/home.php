@@ -1,11 +1,3 @@
-<?php
-// echo 'Chargement de ' . __FILE__ . '<br>';
-
-// Récupération des événements
-$stmt = $pdo->query("SELECT titre, description, date, heure FROM event ORDER BY date ASC");
-$events = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <div class="max-w-7xl mx-auto mt-6">
     <h2 class="text-2xl font-bold mb-4">Liste des événements</h2>
     <?php if (count($events) > 0): ?>

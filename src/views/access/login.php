@@ -1,31 +1,3 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-require_once 'back/db.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom = $_POST['nom'] ?? '';
-    $mot_de_passe = $_POST['mot_de_passe'] ?? '';
-
-    $stmt = $pdo->prepare("SELECT * FROM user WHERE nom = :nom");
-    $stmt->execute(['nom' => $nom]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($user && password_verify($mot_de_passe, $user['mot_de_passe'])) {
-        $_SESSION['user'] = [
-            'id' => $user['id_user'],
-            'nom' => $user['nom'],
-            'email' => $user['email']
-        ];
-        header('Location: ?view=home');
-        exit();
-    } else {
-        $error = 'Nom ou mot de passe invalide';
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>

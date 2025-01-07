@@ -1,28 +1,46 @@
 <?php
+
+require_once __DIR__ . '/../controllers/HomeController.php';
+require_once __DIR__ . '/../controllers/AuthController.php';
+require_once __DIR__ . '/../controllers/EventController.php';
+require_once __DIR__ . '/../../back/db.php';
+
+
 $view = $_GET['view'] ?? 'home';
 
-switch ($view) {
-    case 'home':
-        include 'src/views/home.php';
-        break;
-    case 'login':
-        include 'src/views/access/login.php';
-        break;
-    case 'register':
-        include 'src/views/access/register.php';
-        break;
-    case 'events' : 
-        include 'src/views/events/view.php';
-        break;
-    case 'create' : 
-        include 'src/views/events/create.php';
-        break;
-    case 'logout' : 
-        include 'src/views/access/logout.php';
-        break;
-    default:
-        http_response_code(404);
-        include 'src/views/404.php';
-        break;
+try {
+    switch ($view) {
+        case 'home':
+            $controller = new HomeController($pdo);
+            $controller->index($pdo);
+            break;
+        case 'login':
+            $controller = new AuthController();
+            $controller->login($pdo);
+            break;
+        case 'register':
+            $controller = new AuthController();
+            $controller->register($pdo);
+            break;
+        case 'events':
+            $controller = new EventController();
+            $controller->viewEvents($pdo);
+            break;
+        case 'create':
+            $controller = new EventController();
+            $controller->createEvent($pdo);
+            break;
+        case 'logout':
+            $controller = new AuthController();
+            $controller->logout($pdo);
+            break;
+        default:
+            http_response_code(404);
+            include __DIR__ . '../views/404.php';
+            break;
+    }
+} catch (Exception $e) {
+    http_response_code(500);
+    echo "Internal Server Error: " . $e->getMessage();
 }
 ?>

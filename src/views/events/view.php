@@ -1,16 +1,3 @@
-<?php
-// Vérifiez la connexion à la base de données
-require_once 'back/db.php';
-
-try {
-    // Utiliser le nom correct de la table : event
-    $stmt = $pdo->query('SELECT * FROM event ORDER BY date, heure');
-    $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die('Erreur lors de la récupération des événements : ' . $e->getMessage());
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>

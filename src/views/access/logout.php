@@ -11,6 +11,6 @@ session_unset();
 session_destroy();
 
 // Rediriger l'utilisateur vers la page d'accueil ou de connexion
-header('Location: ?view=login');
+header('Location: ?view=home');
 exit();
 ?>

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
 
             // Redirection après ajout
-            header('Location: ?view=events');
+            header(header: 'Location: ?view=events');
             exit();
         } catch (PDOException $e) {
             die('Erreur lors de la création de l\'événement : ' . $e->getMessage());

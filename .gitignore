@@ -1,2 +1,5 @@
-back
+# Ignorer le dossier back
+back/
+
+# Ignorer le fichier .htaccess
 .htaccess

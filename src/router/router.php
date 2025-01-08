@@ -5,7 +5,6 @@ require_once __DIR__ . '/../controllers/AuthController.php';
 require_once __DIR__ . '/../controllers/EventController.php';
 require_once __DIR__ . '/../../back/db.php';
 
-
 $view = $_GET['view'] ?? 'home';
 
 try {
@@ -14,37 +13,40 @@ try {
             $controller = new HomeController($pdo);
             $controller->index($pdo);
             break;
+
         case 'login':
             $controller = new AuthController();
             $controller->login($pdo);
             break;
+
         case 'register':
             $controller = new AuthController();
             $controller->register($pdo);
             break;
+
         case 'events':
             $controller = new EventController();
-            $controller->viewEvents($pdo);
+            $controller->viewEvents($pdo, $adminController);
             break;
-        case 'create':
-            require_once __DIR__ . '/../controllers/AdminController.php';
-            $adminController = new AdminController();
 
-            if (!$adminController->isAdmin()) { 
-                http_response_code(403);
-                include __DIR__ . '/../views/error.php';
-                exit();
-            }
+        case 'create':
             $controller = new EventController();
-            $controller->createEvent($pdo);
+            $controller->createEvent($pdo, $adminController);
             break;
+
+        case 'delete':
+            $controller = new EventController();
+            $controller->deleteEvent($pdo, $adminController);
+            break;
+
         case 'logout':
             $controller = new AuthController();
             $controller->logout($pdo);
             break;
+
         default:
             http_response_code(404);
-            include __DIR__ . '../views/404.php';
+            include __DIR__ . '/../views/404.php';
             break;
     }
 } catch (Exception $e) {

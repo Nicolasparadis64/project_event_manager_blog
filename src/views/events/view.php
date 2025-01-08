@@ -18,7 +18,9 @@
                     <th class="py-3 px-6 text-left">Date</th>
                     <th class="py-3 px-6 text-left">Heure</th>
                     <th class="py-3 px-6 text-left">Lieu</th>
-                    <th class="py-3 px-6 text-left">Action</th>
+                    <?php if ($adminController->isAdmin()): ?>
+                        <th class="py-3 px-6 text-left">Action</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
@@ -29,7 +31,14 @@
                         <td class="py-3 px-6 text-left"><?= htmlspecialchars($event['date']) ?></td>
                         <td class="py-3 px-6 text-left"><?= htmlspecialchars($event['heure']) ?></td>
                         <td class="py-3 px-6 text-left"><?= htmlspecialchars($event['lieu']) ?></td>
-                        <td class="py-3 px-6"><button>supprimer</button></td>
+                        <?php if ($adminController->isAdmin()): ?>
+                            <td class="py-3 px-6 text-left">
+                                <form action="?view=delete" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?');">
+                                    <input type="hidden" name="id" value="<?= $event['id_evenement'] ?>">
+                                    <button type="submit" class="text-red-600 hover:underline">Supprimer</button>
+                                </form>
+                            </td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -8,11 +8,9 @@ class EventController
     {
         $this->config = require __DIR__ . '/../../back/config.php';
     }
-    
-    public function viewEvents($pdo)
-    {
-        require_once $this->config['paths']['back'] . '/db.php';
 
+    public function viewEvents($pdo, $adminController)
+    {
         try {
             $stmt = $pdo->query('SELECT * FROM event ORDER BY date, heure');
             $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -21,21 +19,11 @@ class EventController
         }
 
         include $this->config['paths']['views'] . '/events/view.php';
-
     }
 
-    public function createEvent($pdo)
+    public function createEvent($pdo, $adminController)
     {
-        require_once $this->config['paths']['back'] . '/db.php';
-        require_once $this->config['paths']['controllers'] . '/AdminController.php';
-
-        $adminController = new AdminController();
-        
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        
-        if (!$adminController->isAdmin()) { 
+        if (!$adminController->isAdmin()) {
             http_response_code(403);
             echo 'Accès refusé';
             exit();
@@ -59,7 +47,7 @@ class EventController
                         'lieu' => $lieu,
                     ]);
 
-                    header(header: 'Location: ?view=events');
+                    header('Location: ?view=events');
                     exit();
                 } catch (PDOException $e) {
                     die('Erreur lors de la création de l\'événement : ' . $e->getMessage());
@@ -69,5 +57,30 @@ class EventController
             }
         }
         include $this->config['paths']['views'] . '/admin/create.php';
+    }
+
+    public function deleteEvent($pdo, $adminController)
+    {
+        if (!$adminController->isAdmin()) {
+            http_response_code(403);
+            echo 'Accès refusé';
+            exit();
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? '';
+
+            if ($id) {
+                try {
+                    $stmt = $pdo->prepare('DELETE FROM event WHERE id_evenement = :id');
+                    $stmt->execute(['id' => $id]);
+
+                    header('Location: ?view=events');
+                    exit();
+                } catch (PDOException $e) {
+                    die('Erreur lors de la suppression de l\'évènement :' . $e->getMessage());
+                }
+            }
+        }
     }
 }

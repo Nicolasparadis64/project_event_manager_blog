@@ -18,7 +18,11 @@
                     </a>
                     <div class="hidden md:flex md:items-center md:ml-6 space-x-4">
                         <a href="?view=events" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md">Événements</a>
-                        <a href="?view=create" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md">Créer</a>
+                        <?php if ($adminController->isAdmin()): ?>
+                            <td class="py-3 px-6 text-left">
+                                <a href="?view=create" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md">Créer</a>
+                            </td>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="flex items-center">

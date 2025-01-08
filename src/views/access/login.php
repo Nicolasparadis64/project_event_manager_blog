@@ -23,6 +23,7 @@
                 </div>
                 <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">Se connecter</button>
             </form>
+            <a href="?view=register" class="text-gray-600 hover:text-gray-900">Inscription</a>
         </div>
     </div>
 </body>

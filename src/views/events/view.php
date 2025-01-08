@@ -18,6 +18,7 @@
                     <th class="py-3 px-6 text-left">Date</th>
                     <th class="py-3 px-6 text-left">Heure</th>
                     <th class="py-3 px-6 text-left">Lieu</th>
+                    <th class="py-3 px-6 text-left">Action</th>
                 </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
@@ -28,6 +29,7 @@
                         <td class="py-3 px-6 text-left"><?= htmlspecialchars($event['date']) ?></td>
                         <td class="py-3 px-6 text-left"><?= htmlspecialchars($event['heure']) ?></td>
                         <td class="py-3 px-6 text-left"><?= htmlspecialchars($event['lieu']) ?></td>
+                        <td class="py-3 px-6"><button>supprimer</button></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

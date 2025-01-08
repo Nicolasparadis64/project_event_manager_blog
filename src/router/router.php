@@ -27,6 +27,14 @@ try {
             $controller->viewEvents($pdo);
             break;
         case 'create':
+            require_once __DIR__ . '/../controllers/AdminController.php';
+            $adminController = new AdminController();
+
+            if (!$adminController->isAdmin()) { 
+                http_response_code(403);
+                include __DIR__ . '/../views/error.php';
+                exit();
+            }
             $controller = new EventController();
             $controller->createEvent($pdo);
             break;
@@ -43,4 +51,3 @@ try {
     http_response_code(500);
     echo "Internal Server Error: " . $e->getMessage();
 }
-?>

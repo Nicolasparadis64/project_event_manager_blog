@@ -27,9 +27,18 @@ class EventController
     public function createEvent($pdo)
     {
         require_once $this->config['paths']['back'] . '/db.php';
+        require_once $this->config['paths']['controllers'] . '/AdminController.php';
 
+        $adminController = new AdminController();
+        
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
+        }
+        
+        if (!$adminController->isAdmin()) { 
+            http_response_code(403);
+            echo 'Accès refusé';
+            exit();
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -59,6 +68,6 @@ class EventController
                 echo 'Tous les champs sont requis.';
             }
         }
-        include $this->config['paths']['views'] . '/../views/events/create.php';
+        include $this->config['paths']['views'] . '/admin/create.php';
     }
 }

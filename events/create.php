@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ])) {
             $eventId = $pdo->lastInsertId();
             
-            // Ajouter l'emplacement dans la table Avoir
             $stmtLieu = $pdo->prepare("INSERT INTO Avoir (id_lieu, id_evenement) VALUES (?, ?)");
             $stmtLieu->execute([$data->id_lieu, $eventId]);
             

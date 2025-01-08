@@ -24,6 +24,11 @@ try {
             $controller->register($pdo);
             break;
 
+        case 'register_event':
+            $controller = new EventController();
+            $controller->registerToEvent($pdo);
+            break;
+
         case 'events':
             $controller = new EventController();
             $controller->viewEvents($pdo, $adminController);
@@ -42,6 +47,11 @@ try {
         case 'logout':
             $controller = new AuthController();
             $controller->logout($pdo);
+            break;
+
+        case 'update_event':
+            $controller = new EventController();
+            $controller->updateEvent($pdo, $adminController);
             break;
 
         default:

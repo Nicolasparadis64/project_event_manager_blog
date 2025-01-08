@@ -162,6 +162,8 @@ html,
   /* 6 */
   -webkit-tap-highlight-color: transparent;
   /* 7 */
+  height: 100%; /* Permet de garantir que la hauteur de la page est 100% */
+  margin: 0; /* Supprime tout espacement par défaut */
 }
 
 /*
@@ -173,6 +175,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  height: 100%; /* Permet de garantir que la hauteur de la page est 100% */
+  margin: 0; /* Supprime tout espacement par défaut */
 }
 /*
 1. Add the correct height in Firefox.

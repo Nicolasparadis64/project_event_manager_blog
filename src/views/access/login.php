@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
-    <div class="min-h-screen flex items-center justify-center">
+    <div class="flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-md w-96">
             <h1 class="text-2xl font-bold mb-6">Connexion</h1>
             <?php if (isset($error)): ?>
@@ -26,5 +18,3 @@
             <a href="?view=register" class="text-gray-600 hover:text-gray-900">Inscription</a>
         </div>
     </div>
-</body>
-</html>

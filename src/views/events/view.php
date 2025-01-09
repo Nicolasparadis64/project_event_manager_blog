@@ -25,6 +25,8 @@
                         <th class="py-3 px-6 text-left">Action</th>
                     <?php endif; ?>
                     <th class="py-3 px-6 text-left">Inscription</th>
+                    <th class="py-3 px-6 text-left">Inscription</th>
+
                 </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
@@ -35,6 +37,9 @@
                         <td class="py-3 px-6 text-left"><?= htmlspecialchars($event['date']) ?></td>
                         <td class="py-3 px-6 text-left"><?= htmlspecialchars($event['heure']) ?></td>
                         <td class="py-3 px-6 text-left"><?= htmlspecialchars($event['lieu']) ?></td>
+                        <td class="py-3 px-6 text-left">
+                            Inscriptions : <?= $event['inscrit_count'] ?>
+                        </td>
                         <?php if ($adminController->isAdmin()): ?>
                             <td class="py-3 px-6 text-left">
                                 <form action="?view=delete" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?');">
@@ -43,14 +48,39 @@
                                 </form>
                             </td>
                             <td>
-                            <a href="?view=update_event&id=<?= $event['id_evenement'] ?>">Modifier</a>
+                                <a href="?view=update_event&id=<?= $event['id_evenement'] ?>">Modifier</a>
                             </td>
                         <?php endif; ?>
+                        
                         <td>
-                            <form action="?view=register_event" method="POST">
-                                <input type="hidden" name="event_id" value="<?= $event['id_evenement'] ?>">
-                                <button type="submit">S'inscrire</button>
-                            </form>
+                            <?php if ($userId): ?>
+                                <?php
+                                $stmt = $pdo->prepare('SELECT * FROM register WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                                $stmt->execute([
+                                    'id_utilisateur' => $userId,
+                                    'id_evenement' => $event['id_evenement'],
+                                ]);
+                                $userRegistered = $stmt->fetch(PDO::FETCH_ASSOC);
+                                ?>
+
+                                <?php if ($userRegistered): ?>
+                                    <button class="bg-gray-500 text-white font-bold py-2 px-4 rounded" disabled>
+                                        Inscrit
+                                    </button>
+                                <?php else: ?>
+                                    <form action="?view=register_event" method="POST">
+                                        <input type="hidden" name="event_id" value="<?= $event['id_evenement'] ?>">
+                                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            S'inscrire
+                                        </button>
+                                    </form>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" disabled>
+                                    Connexion requise
+                                </button>
+                            <?php endif; ?>
+                        
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -13,9 +13,26 @@ class HomeController
 
     public function index($pdo)
     {
-        $stmt = $pdo->query("SELECT titre, description, date, heure FROM event ORDER BY date ASC");
+        // $stmt = $pdo->query("SELECT e.titre, e.description, e.date, e.heure, u.nom, u.prenom,             
+        // (SELECT COUNT(*) FROM register r WHERE r.id_evenement = e.id_evenement) AS inscrit_count 
+        //                      FROM event e
+        //                      LEFT JOIN register r ON e.id_evenement = r.id_evenement
+        //                      LEFT JOIN user u ON r.id_utilisateur = u.id_utilisateur
+        //                      ORDER BY e.date ASC");
+        $stmt = $pdo->query('
+        SELECT 
+            e.*,
+            (SELECT COUNT(*) 
+             FROM register r 
+             WHERE r.id_evenement = e.id_evenement) AS inscrit_count
+        FROM event e
+        ORDER BY e.date, e.heure
+    ');
+    
         $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         include $this->config['paths']['views'] . '/home.php';
     }
+    
+    
 }

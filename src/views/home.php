@@ -7,6 +7,9 @@
                     <h3 class="text-xl font-bold"><?= htmlspecialchars($event['titre']) ?></h3>
                     <p class="text-gray-700"><?= htmlspecialchars($event['description']) ?></p>
                     <p class="text-gray-500 text-sm"><?= htmlspecialchars($event['date']) ?> à <?= htmlspecialchars($event['heure']) ?></p>
+
+                    <p class="text-gray-600 font-medium mt-4">Inscrits :</p>
+                    <p class="text-gray-700"><?= $event['inscrit_count'] ?></p>
                 </div>
             <?php endforeach; ?>
         </div>

@@ -25,7 +25,7 @@ class AuthController
 
             if ($user && password_verify($mot_de_passe, $user['mot_de_passe'])) {
                 $_SESSION['user'] = [
-                    'id' => $user['id_user'],
+                    'id' => $user['id_utilisateur'],
                     'nom' => $user['nom'],
                     'email' => $user['email'],
                     'role' => $user['role'],

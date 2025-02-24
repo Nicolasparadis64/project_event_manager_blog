@@ -15,6 +15,6 @@
                 </div>
                 <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">Se connecter</button>
             </form>
-            <a href="?view=register" class="text-gray-600 hover:text-gray-900">Inscription</a>
+            <a href="?view=register" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">Inscription</a>
         </div>
     </div>

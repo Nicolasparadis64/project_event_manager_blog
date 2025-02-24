@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des événements</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
 <body class="bg-gray-100">
     <div class="container mx-auto py-8">
         <h1 class="text-3xl font-bold text-center mb-8">Liste des événements</h1>
@@ -51,7 +41,7 @@
                                 <a href="?view=update_event&id=<?= $event['id_evenement'] ?>">Modifier</a>
                             </td>
                         <?php endif; ?>
-                        
+
                         <td>
                             <?php if ($userId): ?>
                                 <?php
@@ -64,23 +54,27 @@
                                 ?>
 
                                 <?php if ($userRegistered): ?>
-                                    <button class="bg-gray-500 text-white font-bold py-2 px-4 rounded" disabled>
-                                        Inscrit
+                                    <form action="?view=unregister_event" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir vous désinscrire ?');">
+                                    <input type="hidden" name="event_id" value="<?= $event['id_evenement'] ?>">
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                        Se désinscrire
                                     </button>
+                                </form>
                                 <?php else: ?>
                                     <form action="?view=register_event" method="POST">
-                                        <input type="hidden" name="event_id" value="<?= $event['id_evenement'] ?>">
-                                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                            S'inscrire
-                                        </button>
-                                    </form>
+                                    <input type="hidden" name="event_id" value="<?= $event['id_evenement'] ?>">
+                                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        S'inscrire
+                                    </button>
+                                </form>
                                 <?php endif; ?>
                             <?php else: ?>
                                 <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" disabled>
                                     Connexion requise
                                 </button>
                             <?php endif; ?>
-                        
+                           
+
                         </td>
                     </tr>
                 <?php endforeach; ?>

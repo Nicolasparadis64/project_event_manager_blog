@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 require_once 'src/controllers/AdminController.php';
 
-$adminController = new AdminController();
+$adminController = new AdminController($pdo);
 
 require_once 'src/layout/header.php';
 

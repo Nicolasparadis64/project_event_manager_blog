@@ -51,7 +51,7 @@
                         S'inscrire
                     </button>
                     <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                        href="?view=home">
+                        href="?view=login">
                         Déjà inscrit ?
                     </a>
                 </div>

@@ -31,6 +31,7 @@ class HomeController
     
         $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        // error_log("Route demandée : $view", 3, '/path/to/debug.log');
         include $this->config['paths']['views'] . '/home.php';
     }
     

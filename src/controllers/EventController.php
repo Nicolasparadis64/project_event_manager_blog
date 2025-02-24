@@ -145,6 +145,42 @@ class EventController
         }
     }
 
+    public function unRegisterToEvent($pdo) {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['user'])) {
+            header('Location: ?view=login');
+            exit();
+        }
+
+        $userId = $_SESSION['user']['id'] ?? null;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $eventId = $_POST['event_id'] ?? null;
+
+            if ($eventId && $userId) {
+                try {
+                    $stmt = $pdo->prepare('
+                    DELETE FROM register
+                    WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                    $stmt->execute([
+                        'id_utilisateur' => $userId,
+                        'id_evenement' => $eventId,
+                    ]);
+
+                    header('Location: ?view=events&success=1');
+                    exit();
+                } catch (PDOException $e) {
+                    die('Erreur lors de la suppression de l\'inscription : ' . $e->getMessage());
+                }
+            } else {
+                echo 'Id d\événement ou utilisateur manquand';
+            }
+        }
+    }
+
 
     public function updateEvent($pdo, $adminController)
     {

@@ -1,4 +1,4 @@
-<div class="header-image w-full h-screen bg-cover bg-center flex items-center" style="background-image: url(/project_event_manager/public/image/conference2.jpg);">
+<div class="header-image w-full h-screen bg-cover bg-center flex items-center" style="background-image: url(/project_event_manager_blog/public/image/conference2.jpg);">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
         <div class="header-content text-left md:w-1/2 p-6">
             <h1 class="text-white text-4xl md:text-5xl font-bold mb-4">Lorem ipsum</h1>

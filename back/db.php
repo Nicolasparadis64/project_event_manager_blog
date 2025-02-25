@@ -1,5 +1,9 @@
 <?php
-$config = require __DIR__ . '/../back/config.php';
+error_log("Chargement de db.php", 0);
+
+// $config = require __DIR__ . '/../back/config.php';
+$config = require dirname(__FILE__) . '/config.php';
+
 
 $host = $config['db']['host'];
 $db = $config['db']['dbname'];

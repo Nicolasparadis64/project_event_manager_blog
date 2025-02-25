@@ -73,7 +73,7 @@
                         <div class="flex justify-center flex-row mr-3">
                         <span class="text-gray-800 mr-2"><?= htmlspecialchars($_SESSION['user']['nom']) ?></span>
                         <?php if ($adminController->isAdmin()): ?>
-                            <img src="/project/public/image/crown.png" alt="Example Image">
+                            <img src="/project_event_manager/public/image/crown.png" alt="Example Image">
                         <?php endif; ?>
                         </div>
                         <a href="?view=logout" class="text-red-600 hover:text-red-800">Déconnexion</a>

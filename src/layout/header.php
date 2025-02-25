@@ -49,7 +49,7 @@
 </head>
 
 <body class="h-full flex flex-col bg-gray-50">
-<nav id="navbar" class="fixed top-0 w-full backdrop-blur-lg bg-white/90 shadow-lg z-10" style="transition: transform 0.3s ease, opacity 0.3s ease">
+<nav id="navbar" class="fixed top-0 w-full backdrop-blur-lg bg-white shadow-lg z-10" style="transition: transform 0.3s ease, opacity 0.3s ease">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
                 <div class="flex">

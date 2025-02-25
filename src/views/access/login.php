@@ -1,3 +1,4 @@
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-md w-96">
             <h1 class="text-2xl font-bold mb-6">Connexion</h1>
@@ -13,8 +14,9 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="mot_de_passe">Mot de passe</label>
                     <input id="mot_de_passe" type="password" name="mot_de_passe" class="w-full p-2 border rounded" required>
                 </div>
-                <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">Se connecter</button>
+                <button type="submit" class="w-full justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors px-4 py-2 rounded">Se connecter</button>
             </form>
-            <a href="?view=register" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">Inscription</a>
+            <a href="?view=register" class="inline-block align-baseline font-bold text-sm text-indigo-600 hover:text-blue-800">Inscription</a>
         </div>
+    </div>
     </div>

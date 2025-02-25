@@ -1,4 +1,5 @@
-<div class="max-w-2xl mx-auto">
+<div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
     <h1 class="text-2xl font-bold text-gray-900 mb-6">Modifier l'événement</h1>
     
     <div class="bg-white shadow sm:rounded-lg">
@@ -48,4 +49,3 @@
         </div>
     </div>
 </div>
-

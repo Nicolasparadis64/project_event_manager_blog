@@ -1,3 +1,5 @@
+<div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
 <h1 class="text-xl font-bold mb-4">Créer un utilisateur</h1>
 
 <form action="?view=createUser" method="POST" class="space-y-4">
@@ -24,5 +26,7 @@
             <option value="admin">Admin</option>
         </select>
     </div>
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Créer</button>
+    <button type="submit" class="justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors px-4 py-2 rounded">Créer</button>
 </form>
+
+</div>

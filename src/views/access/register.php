@@ -48,11 +48,11 @@
                         id="confirmation_mot_de_passe" type="password" name="confirmation_mot_de_passe" required>
                 </div>
                 <div class="flex items-center justify-between">
-                    <button class="justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors px-4 py-2 rounded"
+                    <button class="justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 px-4 py-2 rounded"
                         type="submit">
                         S'inscrire
                     </button>
-                    <a class="inline-block align-baseline font-bold text-sm text-indigo-600 hover:text-blue-800"
+                    <a class="inline-block align-baseline font-bold text-sm text-gray-700 hover:text-gray-900"
                         href="?view=login">
                         Déjà inscrit ?
                     </a>

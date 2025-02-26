@@ -26,7 +26,7 @@
             <option value="admin">Admin</option>
         </select>
     </div>
-    <button type="submit" class="justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors px-4 py-2 rounded">Créer</button>
+    <button type="submit" class="justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 px-4 py-2 rounded">Créer l'utilisateur</button>
 </form>
 
 </div>

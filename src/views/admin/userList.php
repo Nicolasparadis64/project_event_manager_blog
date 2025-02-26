@@ -2,9 +2,11 @@
     <h1 class="text-2xl font-bold text-gray-900 mb-6">Liste des utilisateurs</h1>
     
     <div class="flex justify-end mb-4">
-        <a href="?view=createUser" class="inline-flex justify-center border border-transparent shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors px-4 py-2 rounded">
-            Créer un utilisateur
-        </a>
+        <button class="justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 px-4 py-2 rounded">
+            <a href="?view=createUser">
+                Créer un utilisateur
+            </a>
+        </button>
     </div>
 
     <div class="overflow-x-auto rounded-lg shadow">

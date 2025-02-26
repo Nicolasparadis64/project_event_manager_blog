@@ -14,9 +14,9 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="mot_de_passe">Mot de passe</label>
                     <input id="mot_de_passe" type="password" name="mot_de_passe" class="w-full p-2 border rounded" required>
                 </div>
-                <button type="submit" class="w-full justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors px-4 py-2 rounded">Se connecter</button>
+                <button type="submit" class="w-full justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  px-4 py-2 rounded">Se connecter</button>
             </form>
-            <a href="?view=register" class="inline-block align-baseline font-bold text-sm text-indigo-600 hover:text-blue-800">Inscription</a>
+            <a href="?view=register" class="inline-block align-baseline font-bold text-sm text-gray-700 hover:text-gray-900">Inscription</a>
         </div>
     </div>
     </div>

@@ -3,7 +3,7 @@
         <div class="header-content text-left md:w-1/2 p-6">
             <h1 class="text-white text-4xl md:text-5xl font-bold mb-4">Lorem ipsum</h1>
             <p class="text-white text-lg mb-6">Découvrez nos événements et rejoignez notre communauté aujourd'hui.</p>
-            <a href="?view=events" class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-6 rounded transition duration-300">
+            <a href="?view=events" class="bg-gray-800 hover:bg-gray-900 transition duration-300 text-white font-bold py-2 px-6 rounded ">
                 Explorer
             </a>
         </div>

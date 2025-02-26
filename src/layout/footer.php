@@ -9,7 +9,7 @@
                     Votre plateforme de gestion d'événements simple et intuitive. Organisez, participez et partagez vos événements en toute simplicité.
                 </p>
             </div>
-            
+
             <div>
                 <h3 class="text-lg font-semibold mb-4">Liens Rapides</h3>
                 <ul class="space-y-2">
@@ -21,7 +21,7 @@
                     <?php endif; ?>
                 </ul>
             </div>
-            
+
             <div>
                 <h3 class="text-lg font-semibold mb-4">À Propos</h3>
                 <ul class="space-y-2">
@@ -31,12 +31,12 @@
                     <li><a href="#" class="text-gray-300 hover:text-white transition">Politique de confidentialité</a></li>
                 </ul>
             </div>
-            
+
             <div>
                 <h3 class="text-lg font-semibold mb-4">Contact</h3>
                 <p class="text-gray-300 mb-2">Email: contact@eventmanager.fr</p>
                 <p class="text-gray-300 mb-4">Téléphone: +33 1 23 45 67 89</p>
-                
+
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-300 hover:text-white transition">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="pt-8 mt-8 border-t border-gray-700 text-center text-gray-400">
             <p>&copy; <?= date('Y') ?> EventManager. Tous droits réservés.</p>
         </div>
@@ -71,18 +71,59 @@
 <script>
     let prevScrollpos = window.pageYOffset;
     const navbar = document.getElementById("navbar");
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
 
     window.onscroll = function() {
         let currentScrollPos = window.pageYOffset;
         if (prevScrollpos > currentScrollPos) {
             navbar.classList.remove("slide-up");
         } else {
-            navbar.classList.add("slide-up");
+            if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+                navbar.classList.remove("slide-up");
+            } else {
+                navbar.classList.add("slide-up");
+            }
         }
         prevScrollpos = currentScrollPos;
     }
 
-    // Vérifiez si l'élément searchInput existe avant d'ajouter un écouteur d'événement
+    if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', function() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        });
+    }
+
+    if (mobileMenu) {
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
+
+    function adjustCarouselSpacing() {
+        const carousel = document.querySelector('.carousel-container'); 
+        if (carousel) {
+            if (window.innerWidth < 640) { // Mobile
+                carousel.classList.remove('px-8', 'px-12');
+                carousel.classList.add('max-w-screen-xl mx-auto');
+            } else if (window.innerWidth < 1024) { // Tablet
+                carousel.classList.remove('px-4', 'px-12');
+                carousel.classList.add('max-w-screen-xl mx-auto');
+            } else { // Desktop
+                carousel.classList.remove('px-4', 'px-8');
+                carousel.classList.add('max-w-screen-xl mx-auto');
+            }
+        }
+    }
+
+    window.addEventListener('load', adjustCarouselSpacing);
+    window.addEventListener('resize', adjustCarouselSpacing);
+
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
         searchInput.addEventListener('keyup', function() {
@@ -101,6 +142,16 @@
             });
         });
     }
+
+    var typed = new Typed("#typed", {
+        strings: ["événement", "spectacle", "conférence", "salon"],
+        typeSpeed: 80,
+        backSpeed: 50,
+        backDelay: 3000,
+        startDelay: 500,
+        loop: true
+    });
 </script>
 </body>
+
 </html>

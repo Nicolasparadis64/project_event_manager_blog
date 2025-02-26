@@ -1,6 +1,6 @@
-<section class="py-20 mx-auto">
-    <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8">
+<section class="py-12 mx-auto">
+    <div class="mx-auto md:my-12 lg:my-16 ">
+        <div class="grid md:grid-cols-3 gap-8 ">
             <?php
             if (!isset($events) || empty($events)) {
                 echo '<div class="w-full text-center py-8"><p class="text-gray-600">Aucun événement à afficher dans le carrousel.</p></div>';
@@ -8,15 +8,14 @@
                 $featuredEvents = array_slice($events, 0, min(5, count($events)));
             ?>
 
-                <div class="carousel-container w-full overflow-hidden relative mb-12 col-span-3">
-                    <h2 class="text-2xl font-bold mb-6 text-start">Événements à la une</h2>
+                <div class="carousel-container w-full overflow-hidden relative mb-12 col-span-3 p-0">
+                    <h2 class=" text-2xl font-bold mb-6 text-start px-4 md:px-6 lg:px-8">Événements à la une</h2>
 
-                    <div class="carousel-wrapper relative">
+                    <div class="relative overflow-hidden">
                         <div class="carousel-slides flex transition-transform duration-500 ease-in-out" id="carouselSlides">
                             <?php foreach ($featuredEvents as $index => $event): ?>
-                                <div class="carousel-slide min-w-full px-4" data-index="<?= $index ?>">
+                                <div class="carousel-slide " data-index="<?= $index ?>">
                                     <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
-                                        <!-- Image de l'événement (si disponible) -->
                                         <?php if (isset($event['image']) && !empty($event['image'])): ?>
                                             <div class="h-48 bg-cover bg-center" style="background-image: url('<?= htmlspecialchars($event['image']) ?>')"></div>
                                         <?php else: ?>

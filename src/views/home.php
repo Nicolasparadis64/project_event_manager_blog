@@ -1,26 +1,36 @@
-<div class="header-image w-full h-screen bg-cover bg-center flex items-center" style="background-image: url(/project_event_manager_blog/public/image/conference2.jpg);">
+<div class="header-image w-full h-screen bg-cover bg-center flex items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/project_event_manager_blog/public/image/conference2.jpg);">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-        <div class="header-content text-left md:w-1/2 p-6">
-            <h1 class="text-white text-4xl md:text-5xl font-bold mb-4">Lorem ipsum</h1>
+
+        <h1 class="heading-1">
+            <span>
+                La solution de billetterie idéale pour votre
+            </span>
+            <br>
+            <span id="typed"></span>
+        </h1>
+
+
+        <!-- <h1 >Lorem ipsum</h1>
             <p class="text-white text-lg mb-6">Découvrez nos événements et rejoignez notre communauté aujourd'hui.</p>
             <a href="?view=events" class="bg-gray-800 hover:bg-gray-900 transition duration-300 text-white font-bold py-2 px-6 rounded ">
                 Explorer
-            </a>
-        </div>
+            </a> -->
     </div>
 </div>
 
-<?php 
+
+
+<?php
 require_once __DIR__ . '/../../src/views/events/carrousel.php';
 ?>
 
 
-<div class="container mx-auto my-12 px-4"> 
+<div class="container mx-auto px-4 my-8 md:my-12 lg:my-16">
     <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-bold">Liste des événements</h2>
+        <h2 class=" text-2xl font-bold">Liste des événements</h2>
 
         <div class="relative max-w-md w-full">
-            <input type="text" id="searchInput" placeholder="Rechercher un événement" 
+            <input type="text" id="searchInput" placeholder="Rechercher un événement"
                 class="w-full border py-2 px-4 rounded-lg shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             <button class="absolute right-3 top-2 text-gray-500 hover:text-gray-700">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

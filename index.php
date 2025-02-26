@@ -18,7 +18,7 @@ if (!$skipHeaderFooter) {
 }
 ?>
 
-<main class="<?php echo $skipHeaderFooter ? 'h-screen' : 'flex-1 pt-16'; ?>">
+<main class="<?php echo $skipHeaderFooter ? 'h-screen' : 'flex-1'; ?>">
     <?php require_once 'src/router/router.php'; ?>
 </main>
 

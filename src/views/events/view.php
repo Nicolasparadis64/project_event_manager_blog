@@ -1,9 +1,9 @@
-<body class="bg-gray-100">
-    <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
+<!-- <body class="bg-gray-100"> -->
+    <div class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <h1 class="text-2xl font-bold text-gray-900 mb-6">Liste des événements</h1>
 
-        <div class="overflow-x-auto rounded-lg shadow">
-            <table class="min-w-full bg-white rounded-lg overflow-hidden">
+        <div class="overflow-x-auto rounded-lg shadow-md mb-12"> 
+        <table class="min-w-full bg-white rounded-lg overflow-hidden">
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                         <th class="py-3 px-4 text-left">Titre</th>
@@ -78,4 +78,4 @@
             </table>
         </div>
     </div>
-</body>
+<!-- </body> -->

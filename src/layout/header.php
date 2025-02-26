@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,10 +43,8 @@
             opacity: 0;
         }
     </style>
-
 </head>
-
-<body class="h-full flex flex-col bg-gray-50">
+<body class="h-full flex flex-col bg-gray-50 min-h-screen">
     <nav id="navbar" class="fixed top-0 w-full backdrop-blur-lg bg-white shadow-lg z-10" style="transition: transform 0.3s ease, opacity 0.3s ease">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
@@ -57,7 +53,6 @@
                         EventManager
                     </a>
                    
-
                     <div class="hidden md:flex md:items-center md:ml-6 space-x-4">
                     <div class="relative group">
                         <button class="text-gray-800 hover:text-gray-900 px-3 py-2 rounded-md focus:outline-none">
@@ -91,7 +86,3 @@
             </div>
         </div>
     </nav>
-
-
-    <main class="flex-1 pt-16">
-        <!-- <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 mb-8"> -->

@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="max-w-7xl mx-auto mt-6 px-4">
+<div class="max-w-7xl mx-auto my-12 px-4"> <!-- Ajout de my-12 pour l'espace vertical -->
     <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold">Liste des événements</h2>
 
@@ -27,18 +27,18 @@
 
     <!-- Liste des événements -->
     <?php if (count($events) > 0): ?>
-        <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6" id="eventsList">
+        <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 mb-12" id="eventsList"> <!-- Ajout de mb-12 -->
             <?php foreach ($events as $event): ?>
-                <div class="bg-white p-4 rounded shadow event-card">
+                <div class="bg-white p-6 rounded-lg shadow-md event-card"> <!-- Amélioré p-6 et shadow-md -->
                     <h3 class="text-xl font-bold"><?= htmlspecialchars($event['titre']) ?></h3>
-                    <p class="text-gray-700"><?= htmlspecialchars($event['description']) ?></p>
-                    <p class="text-gray-500 text-sm"><?= htmlspecialchars($event['date']) ?> à <?= htmlspecialchars($event['heure']) ?></p>
+                    <p class="text-gray-700 mt-2"><?= htmlspecialchars($event['description']) ?></p>
+                    <p class="text-gray-500 text-sm mt-4"><?= htmlspecialchars($event['date']) ?> à <?= htmlspecialchars($event['heure']) ?></p>
                     <p class="text-gray-600 font-medium mt-4">Inscrits :</p>
                     <p class="text-gray-700"><?= $event['inscrit_count'] ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
     <?php else: ?>
-        <p class="text-gray-600 mt-6">Aucun événement disponible pour le moment.</p>
+        <p class="text-gray-600 mt-6 mb-12">Aucun événement disponible pour le moment.</p> <!-- Ajout de mb-12 -->
     <?php endif; ?>
 </div>

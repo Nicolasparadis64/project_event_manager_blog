@@ -10,8 +10,14 @@ require_once 'src/controllers/AdminController.php';
 $adminController = new AdminController($pdo);
 
 require_once 'src/layout/header.php';
+?>
 
-require_once 'src/router/router.php';
+<main class="flex-1 pt-16">
 
+    <?php require_once 'src/router/router.php'; ?>
+
+</main>
+
+<?php
 require_once 'src/layout/footer.php';
 ?>

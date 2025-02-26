@@ -1,7 +1,7 @@
-<div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
+<div class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
     <h1 class="text-2xl font-bold text-gray-900 mb-6">Liste des utilisateurs</h1>
     
-    <div class="flex justify-end mb-4">
+    <div class="flex justify-end mb-6">
         <button class="justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 px-4 py-2 rounded">
             <a href="?view=createUser">
                 Créer un utilisateur
@@ -9,7 +9,7 @@
         </button>
     </div>
 
-    <div class="overflow-x-auto rounded-lg shadow">
+    <div class="overflow-x-auto rounded-lg shadow-md mb-12"> 
         <table class="min-w-full bg-white rounded-lg overflow-hidden">
             <thead>
                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">

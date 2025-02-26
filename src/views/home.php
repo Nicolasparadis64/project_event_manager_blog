@@ -10,7 +10,12 @@
     </div>
 </div>
 
-<div class="max-w-7xl mx-auto my-12 px-4"> <!-- Ajout de my-12 pour l'espace vertical -->
+<?php 
+require_once __DIR__ . '/../../src/views/events/carrousel.php';
+?>
+
+
+<div class="container mx-auto my-12 px-4"> 
     <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold">Liste des événements</h2>
 

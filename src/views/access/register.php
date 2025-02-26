@@ -1,5 +1,29 @@
 
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<?php if ($_GET['view'] === 'login' || $_GET['view'] === 'register'): ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionnaire d'événements - Connexion</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: rgb(249 250 251);
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col min-h-screen">
+<?php endif; ?>
+
+<div class="container flex mx-auto px-4 sm:px-6 lg:px-8 py-8 h-full justify-center items-center">
 
 <div class="flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-md w-96">
@@ -62,3 +86,9 @@
     </div>
 
     </div>
+
+
+<?php if ($_GET['view'] === 'login' || $_GET['view'] === 'register'): ?>
+</body>
+</html>
+<?php endif; ?>

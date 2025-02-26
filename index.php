@@ -9,15 +9,21 @@ require_once 'src/controllers/AdminController.php';
 
 $adminController = new AdminController($pdo);
 
-require_once 'src/layout/header.php';
+$view = $_GET['view'] ?? 'home';
+
+$skipHeaderFooter = ($view === 'login' || $view === 'register');
+
+if (!$skipHeaderFooter) {
+    require_once 'src/layout/header.php';
+}
 ?>
 
-<main class="flex-1 pt-16">
-
+<main class="<?php echo $skipHeaderFooter ? 'h-screen' : 'flex-1 pt-16'; ?>">
     <?php require_once 'src/router/router.php'; ?>
-
 </main>
 
 <?php
-require_once 'src/layout/footer.php';
+if (!$skipHeaderFooter) {
+    require_once 'src/layout/footer.php';
+}
 ?>

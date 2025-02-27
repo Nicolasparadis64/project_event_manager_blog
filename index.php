@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 $pdo = require_once 'back/db.php'; 
 session_start();
 ini_set('display_errors', 1);
@@ -36,4 +38,6 @@ if (!$skipHeaderFooter) {
 if (!$skipHeaderFooter) {
     require_once 'src/layout/footer.php';
 }
+ob_end_flush();
+
 ?>

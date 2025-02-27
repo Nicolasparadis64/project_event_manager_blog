@@ -84,7 +84,6 @@
 
         .carousel-slide {
             flex: 0 0 100%;
-            opacity: 0.7;
             transform: scale(0.9);
             min-width: 80%;
             transition: all 0.3s ease;

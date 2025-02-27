@@ -16,8 +16,8 @@
                             <?php foreach ($featuredEvents as $index => $event): ?>
                                 <div class="carousel-slide " data-index="<?= $index ?>">
                                     <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
-                                        <?php if (isset($event['image']) && !empty($event['image'])): ?>
-                                            <div class="h-48 bg-cover bg-center" style="background-image: url('<?= htmlspecialchars($event['image']) ?>')"></div>
+                                        <?php if (isset($event['image_path']) && !empty($event['image_path'])): ?>
+                                            <div class="h-48 bg-cover bg-center" style="background-image: url('<?= htmlspecialchars($event['image_path']) ?>')"></div>
                                         <?php else: ?>
                                             <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                                                 <span class="text-white text-xl font-bold"><?= htmlspecialchars($event['titre']) ?></span>

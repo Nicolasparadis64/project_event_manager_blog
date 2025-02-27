@@ -3,10 +3,17 @@
 class EventController
 {
     private $config;
+    private $uploadDir;
 
     public function __construct()
     {
         $this->config = require __DIR__ . '/../../back/config.php';
+        $this->uploadDir = __DIR__ . '/../../uploads/events/';
+        
+        // Créer le répertoire d'upload s'il n'existe pas
+        if (!is_dir($this->uploadDir)) {
+            mkdir($this->uploadDir, 0755, true);
+        }
     }
 
     public function viewEvents($pdo, $adminController)
@@ -30,7 +37,35 @@ class EventController
         include $this->config['paths']['views'] . '/events/view.php';
     }
     
-
+    private function handleImageUpload($file) {
+        // Vérifier s'il y a une erreur
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            return null;
+        }
+        
+        // Vérifier le type de fichier
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!in_array($file['type'], $allowedTypes)) {
+            throw new Exception("Type de fichier non autorisé. Seuls JPG, PNG et GIF sont acceptés.");
+        }
+        
+        // Vérifier la taille du fichier (5MB max)
+        if ($file['size'] > 5 * 1024 * 1024) {
+            throw new Exception("La taille du fichier ne doit pas dépasser 5MB.");
+        }
+        
+        // Générer un nom de fichier unique
+        $filename = uniqid() . '_' . basename($file['name']);
+        $uploadPath = $this->uploadDir . $filename;
+        
+        // Déplacer le fichier
+        if (!move_uploaded_file($file['tmp_name'], $uploadPath)) {
+            throw new Exception("Erreur lors de l'upload du fichier.");
+        }
+        
+        // Retourner le chemin relatif pour stockage en BDD
+        return 'uploads/events/' . $filename;
+    }
 
     public function createEvent($pdo, $adminController)
     {
@@ -46,16 +81,29 @@ class EventController
             $date = $_POST['date'] ?? '';
             $heure = $_POST['time'] ?? '';
             $lieu = $_POST['location'] ?? '';
+            $imagePath = null;
+            
+            // Traiter l'upload d'image si un fichier est fourni
+            if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
+                try {
+                    $imagePath = $this->handleImageUpload($_FILES['image']);
+                } catch (Exception $e) {
+                    echo 'Erreur: ' . $e->getMessage();
+                    include $this->config['paths']['views'] . '/admin/create.php';
+                    return;
+                }
+            }
 
             if ($titre && $description && $date && $heure && $lieu) {
                 try {
-                    $stmt = $pdo->prepare('INSERT INTO event (titre, description, date, heure, lieu) VALUES (:titre, :description, :date, :heure, :lieu)');
+                    $stmt = $pdo->prepare('INSERT INTO event (titre, description, date, heure, lieu, image_path) VALUES (:titre, :description, :date, :heure, :lieu, :image_path)');
                     $stmt->execute([
                         'titre' => $titre,
                         'description' => $description,
                         'date' => $date,
                         'heure' => $heure,
                         'lieu' => $lieu,
+                        'image_path' => $imagePath
                     ]);
 
                     header('Location: ?view=events');
@@ -83,8 +131,22 @@ class EventController
 
             if ($id) {
                 try {
+                    // Récupérer le chemin de l'image avant de supprimer l'événement
+                    $stmt = $pdo->prepare('SELECT image_path FROM event WHERE id_evenement = :id');
+                    $stmt->execute(['id' => $id]);
+                    $event = $stmt->fetch(PDO::FETCH_ASSOC);
+                    
+                    // Supprimer l'événement
                     $stmt = $pdo->prepare('DELETE FROM event WHERE id_evenement = :id');
                     $stmt->execute(['id' => $id]);
+                    
+                    // Supprimer l'image associée si elle existe
+                    if ($event && !empty($event['image_path'])) {
+                        $fullPath = __DIR__ . '/../../' . $event['image_path'];
+                        if (file_exists($fullPath)) {
+                            unlink($fullPath);
+                        }
+                    }
 
                     header('Location: ?view=events');
                     exit();
@@ -94,6 +156,7 @@ class EventController
             }
         }
     }
+
     public function registerToEvent($pdo)
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -181,7 +244,6 @@ class EventController
         }
     }
 
-
     public function updateEvent($pdo, $adminController)
     {
         if (!$adminController->isAdmin()) {
@@ -197,12 +259,42 @@ class EventController
             $date = $_POST['date'] ?? '';
             $heure = $_POST['time'] ?? '';
             $lieu = $_POST['location'] ?? '';
+            
+            // Récupérer l'image actuelle
+            $stmt = $pdo->prepare('SELECT image_path FROM event WHERE id_evenement = :id');
+            $stmt->execute(['id' => $id]);
+            $event = $stmt->fetch(PDO::FETCH_ASSOC);
+            $imagePath = $event['image_path'] ?? null;
+            
+            // Traiter le nouvel upload d'image si fourni
+            if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
+                try {
+                    // Supprimer l'ancienne image si elle existe
+                    if (!empty($imagePath)) {
+                        $fullPath = __DIR__ . '/../../' . $imagePath;
+                        if (file_exists($fullPath)) {
+                            unlink($fullPath);
+                        }
+                    }
+                    
+                    // Traiter la nouvelle image
+                    $imagePath = $this->handleImageUpload($_FILES['image']);
+                } catch (Exception $e) {
+                    echo 'Erreur: ' . $e->getMessage();
+                    // Réafficher le formulaire
+                    $stmt = $pdo->prepare('SELECT * FROM event WHERE id_evenement = :id');
+                    $stmt->execute(['id' => $id]);
+                    $event = $stmt->fetch(PDO::FETCH_ASSOC);
+                    include $this->config['paths']['views'] . '/admin/update.php';
+                    return;
+                }
+            }
 
             if ($id && $titre && $description && $date && $heure && $lieu) {
                 try {
                     $stmt = $pdo->prepare('
                     UPDATE event 
-                    SET titre = :titre, description = :description, date = :date, heure = :heure, lieu = :lieu 
+                    SET titre = :titre, description = :description, date = :date, heure = :heure, lieu = :lieu, image_path = :image_path 
                     WHERE id_evenement = :id
                 ');
                     $stmt->execute([
@@ -212,6 +304,7 @@ class EventController
                         'date' => $date,
                         'heure' => $heure,
                         'lieu' => $lieu,
+                        'image_path' => $imagePath
                     ]);
 
                     header('Location: ?view=events');

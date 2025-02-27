@@ -124,22 +124,36 @@
     window.addEventListener('load', adjustCarouselSpacing);
     window.addEventListener('resize', adjustCarouselSpacing);
 
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('keyup', function() {
-            const searchValue = this.value.toLowerCase();
-            const eventCards = document.querySelectorAll('.event-card');
+    // const searchInput = document.getElementById('searchInput');
+    // if (searchInput) {
+    //     searchInput.addEventListener('keyup', function() {
+    //         const searchValue = this.value.toLowerCase();
+    //         const eventCards = document.querySelectorAll('.event-card');
 
-            eventCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
+    //         eventCards.forEach(card => {
+    //             const title = card.querySelector('h3').textContent.toLowerCase();
+    //             const description = card.querySelector('p').textContent.toLowerCase();
 
-                if (title.includes(searchValue) || description.includes(searchValue)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+    //             if (title.includes(searchValue) || description.includes(searchValue)) {
+    //                 card.style.display = 'block';
+    //             } else {
+    //                 card.style.display = 'none';
+    //             }
+    //         });
+    //     });
+    // }
+
+    function filterProjects() {
+        let input = document.getElementById("search-project").value.toLowerCase();
+        let events = document.querySelectorAll(".bg-white.overflow-hidden.shadow.rounded-lg");
+
+        events.forEach(event => {
+            let title = event.querySelector("h3").textContent.toLowerCase();
+            if (title.includes(input)) {
+                event.style.display = "";
+            } else {
+                event.style.display = "none";
+            }
         });
     }
 

@@ -1,4 +1,4 @@
-<section class="py-12 mx-auto">
+<section class="pt-12 mx-auto">
     <div class="mx-auto md:my-12 lg:my-16 ">
         <div class="grid md:grid-cols-3 gap-8 ">
             <?php

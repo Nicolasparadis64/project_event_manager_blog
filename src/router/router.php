@@ -7,10 +7,6 @@ require_once __DIR__ . '/../controllers/EventController.php';
 
 $view = $_GET['view'] ?? 'home';
 
-// if ($view === 'login' && isset($_SESSION['user'])) {
-//     header('Location: ?view=home');
-//     exit();
-// }
 
 try {
     switch ($view) {

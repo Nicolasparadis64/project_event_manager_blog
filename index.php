@@ -29,7 +29,6 @@ if (!$skipHeaderFooter) {
         echo 'flex-1 pt-16'; 
     }
 ?>">
-    <?php var_dump($_SERVER['REQUEST_URI']) ?>
     <?php require_once 'src/router/router.php'; ?>
 </main>
 

@@ -68,86 +68,8 @@
     </div>
 </footer>
 
-<script>
-    let prevScrollpos = window.pageYOffset;
-    const navbar = document.getElementById("navbar");
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
+<script src="/project_event_manager_blog/public/js/script.js" defer></script>
 
-    window.onscroll = function() {
-        let currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-            navbar.classList.remove("slide-up");
-        } else {
-            if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
-                navbar.classList.remove("slide-up");
-            } else {
-                navbar.classList.add("slide-up");
-            }
-        }
-        prevScrollpos = currentScrollPos;
-    }
-
-    if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', function() {
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('hidden');
-            }
-        });
-    }
-
-    if (mobileMenu) {
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    }
-
-    function adjustCarouselSpacing() {
-        const carousel = document.querySelector('.carousel-container'); 
-        if (carousel) {
-            if (window.innerWidth < 640) { // Mobile
-                carousel.classList.remove('px-8', 'px-12');
-                carousel.classList.add('max-w-screen-xl mx-auto');
-            } else if (window.innerWidth < 1024) { // Tablet
-                carousel.classList.remove('px-4', 'px-12');
-                carousel.classList.add('max-w-screen-xl mx-auto');
-            } else { // Desktop
-                carousel.classList.remove('px-4', 'px-8');
-                carousel.classList.add('max-w-screen-xl mx-auto');
-            }
-        }
-    }
-
-    window.addEventListener('load', adjustCarouselSpacing);
-    window.addEventListener('resize', adjustCarouselSpacing);
-
-
-    function filterProjects() {
-        let input = document.getElementById("search-project").value.toLowerCase();
-        let events = document.querySelectorAll(".bg-white.overflow-hidden.shadow.rounded-lg");
-
-        events.forEach(event => {
-            let title = event.querySelector("h3").textContent.toLowerCase();
-            if (title.includes(input)) {
-                event.style.display = "";
-            } else {
-                event.style.display = "none";
-            }
-        });
-    }
-
-    var typed = new Typed("#typed", {
-        strings: ["événement", "spectacle", "conférence", "salon"],
-        typeSpeed: 80,
-        backSpeed: 50,
-        backDelay: 3000,
-        startDelay: 500,
-        loop: true
-    });
-</script>
 </body>
 
 </html>

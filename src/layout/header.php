@@ -5,116 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionnaire d'événements</title>
-    <link href="/css/style.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="/project_event_manager_blog/public/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-        }
 
-        .header-image {
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url(/project_event_manager_blog/public/image/conference2.jpg);
-        }
-
-        .header-image::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-
-        .slide-up {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-
-        .heading-1 {
-            position: relative;
-            z-index: 2;
-
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin: 4rem auto;
-            max-width: 80%;
-            line-height: 1.2;
-        }
-
-        .heading-1 span:first-child {
-            color: white;
-        }
-
-        #typed {
-            color: #3182ce;
-            font-weight: 700;
-        }
-
-        .typed-cursor {
-            font-size: 3rem;
-            color: #3182ce;
-        }
-
-        .event-card {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            padding: 0 1rem;
-        }
-
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            padding: 0 12.5%;
-            /* Ajoute un espace sur les côtés pour voir les slides adjacentes */
-        }
-
-        .carousel-slides {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .carousel-slide {
-            padding: 0 10px;
-            transition: all 0.5s ease;
-        }
-
-        .active-slide {
-            z-index: 10;
-        }
-
-        /* Pour les appareils mobiles */
-        @media (max-width: 767px) {
-            .carousel-container {
-                padding: 0;
-                /* Pas d'espace sur mobile car une seule slide est visible */
-            }
-        }
     </style>
 </head>
 
 <body class="h-full flex flex-col bg-gray-50 min-h-screen">
-    <nav id="navbar" class="fixed top-0 w-full backdrop-blur-lg bg-white shadow-lg z-10" style="transition: transform 0.3s ease, opacity 0.3s ease">
+    <nav id="navbar" class="navbar">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
                 <div class="flex">
@@ -186,3 +89,7 @@
             </div>
         </div>
     </nav>
+
+  
+</body>
+</html>

@@ -7,8 +7,8 @@
     </div>
     
     <!-- Contenu à droite -->
-    <div class="w-full lg:w-1/2 flex items-center justify-center bg-gray-50 px-8 py-16 lg:py-0">
-        <div class="max-w-lg">
+    <div class="w-full lg:w-2/3 flex items-center justify-center bg-gray-50 px-8 py-16 lg:py-0">
+        <div class="max-w-xl">
             <h1 class="text-4xl font-bold text-gray-800 mb-4">
                 La solution de billetterie idéale pour votre
                 <span id="typed" class="text-blue-600"></span>

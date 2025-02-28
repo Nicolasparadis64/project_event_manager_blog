@@ -14,6 +14,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(/project_event_manager_blog/public/image/conference2.jpg);
 }
 
 .header-image::before {
@@ -39,35 +40,50 @@ html, body {
 
 @media (max-width: 640px) {
   .heading-1 {
-      font-size: 2rem;
+    font-size: 2rem;
   }
   
   .typed-cursor {
-      font-size: 2rem;
+    font-size: 2rem;
   }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
   .heading-1 {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
   
   .typed-cursor {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
 }
 
 @media (min-width: 1025px) {
   .heading-1 {
-      font-size: 3rem;
+    font-size: 3rem;
   }
   
   .typed-cursor {
-      font-size: 3rem;
+    font-size: 3rem;
   }
 }
 
 /* Styles pour la navbar */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
 .slide-up {
   transform: translateY(-100%);
   opacity: 0;
@@ -75,19 +91,51 @@ html, body {
 
 /* Styles pour le carousel */
 .carousel-container {
-  padding: 1rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
   overflow: hidden;
 }
 
-@media (min-width: 640px) {
+.carousel-slides {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-slide {
+  padding: 0 10px;
+  transition: all 0.5s ease;
+}
+
+.active-slide {
+  z-index: 10;
+}
+
+@media (max-width: 640px) {
   .carousel-container {
-      padding: 1.5rem;
+    padding: 0 0.5rem;
+  }
+  .carousel-slide {
+    padding: 0 0.5rem;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 641px) and (max-width: 1024px) {
   .carousel-container {
-      padding: 2rem;
+    padding: 0 1rem;
+  }
+  .carousel-slide {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .carousel-container {
+    padding: 0 2rem;
+  }
+  .carousel-slide {
+    padding: 0 2rem;
   }
 }
 
@@ -119,48 +167,41 @@ html, body {
 
 @media (min-width: 768px) {
   .footer-grid {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
   .footer-grid {
-      grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* Ajoutez ceci à ton fichier style.css */
-.carousel-container {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
+/* Ajout d'espacement entre les sections */
+section {
+  margin-bottom: 4rem;  /* Augmente l'espace entre chaque section */
+  padding-top: 3rem;    /* Ajoute de l'espace en haut de chaque section */
+  padding-bottom: 3rem; /* Ajoute de l'espace en bas de chaque section */
+  opacity: 0.5;         /* Opacité par défaut */
+  transition: opacity 0.5s ease-in-out; /* Transition douce pour l'opacité */
 }
 
-/* Ajustement des marges selon la taille d'écran */
-@media (max-width: 640px) {
-  .carousel-container {
-    padding: 0 0.5rem;
-  }
-  .carousel-slide {
-    padding: 0 0.5rem;
-  }
+/* Assure que les sections avec un fond coloré ont suffisamment de padding */
+section.bg-white, section.bg-blue-600, section.bg-gray-50 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-@media (min-width: 641px) and (max-width: 1024px) {
-  .carousel-container {
-    padding: 0 1rem;
-  }
-  .carousel-slide {
-    padding: 0 1rem;
-  }
-}
-
-@media (min-width: 1025px) {
-  .carousel-container {
-    padding: 0 2rem;
-  }
-  .carousel-slide {
-    padding: 0 2rem;
+/* Améliore l'espacement sur mobile */
+@media (max-width: 768px) {
+  section {
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
 
+/* Ajout d'un ID pour la section d'accueil pour mieux cibler */
+#home-section {
+  padding-top: 0; /* Pas de padding en haut pour la section d'accueil */
+}

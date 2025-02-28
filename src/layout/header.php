@@ -82,16 +82,34 @@
             padding: 0 1rem;
         }
 
-        .carousel-slide {
-            flex: 0 0 100%;
-            transform: scale(0.9);
-            min-width: 80%;
-            transition: all 0.3s ease;
-            padding: 0 10px;
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 0 12.5%;
+            /* Ajoute un espace sur les côtés pour voir les slides adjacentes */
         }
 
-     
-        
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .carousel-slide {
+            padding: 0 10px;
+            transition: all 0.5s ease;
+        }
+
+        .active-slide {
+            z-index: 10;
+        }
+
+        /* Pour les appareils mobiles */
+        @media (max-width: 767px) {
+            .carousel-container {
+                padding: 0;
+                /* Pas d'espace sur mobile car une seule slide est visible */
+            }
+        }
     </style>
 </head>
 

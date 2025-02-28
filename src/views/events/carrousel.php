@@ -41,8 +41,8 @@
                                                     </svg>
                                                     <span><?= $event['inscrit_count'] ?> inscrits</span>
                                                 </div>
-                                                <a href="<?= isset($event['id']) ? '?view=event_details&id=' . htmlspecialchars($event['id']) : '#' ?>"
-                                                    class="justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 px-4 py-2 rounded">
+                                                <a href="?view=view_event&id=<?= $event['id_evenement'] ?>" 
+                                                class="justify-center border border-transparent inline shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 px-4 py-2 rounded">
                                                     Détails
                                                 </a>
                                             </div>

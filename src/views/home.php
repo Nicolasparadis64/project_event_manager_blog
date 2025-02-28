@@ -64,6 +64,7 @@ require_once __DIR__ . '/../../src/views/events/carrousel.php';
                             $isRegistered = $stmt->fetchColumn() > 0;
                         }
                         ?>
+                            <a href="?view=view_event&id=<?= $event['id_evenement'] ?>" class="block">
                         <div class="bg-white overflow-hidden shadow rounded-lg">
                             <!-- Image de l'événement -->
                             <?php if (!empty($event['image_path'])): ?>
@@ -140,6 +141,7 @@ require_once __DIR__ . '/../../src/views/events/carrousel.php';
                                 </div>
                             </div>
                         </div>
+                        </a>
                     <?php endforeach; ?>
                 </div>
 

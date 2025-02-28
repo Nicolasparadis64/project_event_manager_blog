@@ -10,12 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateNavbar() {
         const currentScrollY = window.scrollY;
 
-        // Détermine la direction du scroll
         if (currentScrollY > lastScrollY) {
-            // Scroll vers le bas
             navbar.classList.add('hidden');
         } else {
-            // Scroll vers le haut
             navbar.classList.remove('hidden');
         }
 
@@ -82,13 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
+                    entry.target.style.opacity = '1.5';
                 } else {
                     entry.target.style.opacity = '0.5';
                 }
             });
         }, {
-            threshold: 0.3 // Ajustez cette valeur selon vos besoins
+            threshold: 0.3
         });
     
         sections.forEach(section => {

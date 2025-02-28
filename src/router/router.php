@@ -11,7 +11,7 @@ $view = $_GET['view'] ?? 'home';
 try {
     switch ($view) {
         case 'home':
-            
+
             $controller = new HomeController($pdo);
             $controller->index($pdo);
             break;
@@ -66,36 +66,41 @@ try {
             $controller->updateEvent($pdo, $adminController);
             break;
 
-            case 'userList':
+            case 'view_event' : 
+                $controller = new EventController();
+                $controller->viewEvent($pdo);
+                break;
+
+        case 'userList':
+            $controller = new AdminController($pdo);
+            $controller->listUsers();
+            include __DIR__ . '/../views/admin/userList.php';
+            break;
+
+        case 'createUser':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $controller = new AdminController($pdo);
-                $controller->listUsers();
-                include __DIR__ . '/../views/admin/userList.php'; 
-                break;
-            
-            case 'createUser':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $controller = new AdminController($pdo);
-                    $controller->createUser($_POST);
-                } else {
-                    include __DIR__ . '/../views/admin/createUser.php'; 
-                }
-                break;
-            
-            case 'deleteUser':
-                if (isset($_GET['id'])) {
-                    $controller = new AdminController($pdo);
-                    $controller->deleteUser($_GET['id']);
-                }
-                break;
-            
-            case 'updateUser':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id'])) {
-                    $controller = new AdminController($pdo);
-                    $controller->updateUser($_GET['id'], $_POST);
-                } else {
-                    include __DIR__ . '/../views/admin/updateUser.php';
-                }
-                break;
+                $controller->createUser($_POST);
+            } else {
+                include __DIR__ . '/../views/admin/createUser.php';
+            }
+            break;
+
+        case 'deleteUser':
+            if (isset($_GET['id'])) {
+                $controller = new AdminController($pdo);
+                $controller->deleteUser($_GET['id']);
+            }
+            break;
+
+        case 'updateUser':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id'])) {
+                $controller = new AdminController($pdo);
+                $controller->updateUser($_GET['id'], $_POST);
+            } else {
+                include __DIR__ . '/../views/admin/updateUser.php';
+            }
+            break;
 
         default:
             http_response_code(404);

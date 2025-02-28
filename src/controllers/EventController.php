@@ -67,6 +67,59 @@ class EventController
         return 'uploads/events/' . $filename;
     }
 
+    public function viewEvent($pdo) {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $eventId = $_GET['id'] ?? null;
+        
+            if (!$eventId) {
+                echo 'ID d\'événement manquant';
+                return;
+            }
+
+            try {
+                // Récupérer les détails de l'événement
+                $stmt = $pdo->prepare('
+                    SELECT 
+                        e.*,
+                        (SELECT COUNT(*) 
+                         FROM register r 
+                         WHERE r.id_evenement = e.id_evenement) AS inscrit_count
+                    FROM event e
+                    WHERE e.id_evenement = :id
+                ');
+                $stmt->execute(['id' => $eventId]);
+                $event = $stmt->fetch(PDO::FETCH_ASSOC);
+                
+                if (!$event) {
+                    echo 'Événement introuvable.';
+                    return;
+                }
+                
+                // Vérifier si l'utilisateur est inscrit à cet événement
+                $isRegistered = false;
+                if (isset($_SESSION['user'])) {
+                    $stmt = $pdo->prepare('
+                        SELECT COUNT(*) 
+                        FROM register 
+                        WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement
+                    ');
+                    $stmt->execute([
+                        'id_utilisateur' => $_SESSION['user']['id'],
+                        'id_evenement' => $eventId,
+                    ]);
+                    $isRegistered = $stmt->fetchColumn() > 0;
+                }
+                
+                // Charger la vue détaillée
+                include $this->config['paths']['views'] . '/events/view_event.php';
+                
+            } catch (PDOException $e) {
+                die('Erreur lors de la récupération de l\'événement : ' . $e->getMessage());
+            }
+        }
+        
+    }
+
     public function createEvent($pdo, $adminController)
     {
         if (!$adminController->isAdmin()) {

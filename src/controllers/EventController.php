@@ -124,7 +124,8 @@ class EventController
     {
         if (!$adminController->isAdmin()) {
             http_response_code(403);
-            echo 'Accès refusé';
+            header('Location: ?view=login');
+            // echo 'Accès refusé';
             exit();
         }
 

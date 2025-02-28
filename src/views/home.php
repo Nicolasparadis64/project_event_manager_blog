@@ -16,7 +16,7 @@
             <p class="text-gray-600 mb-8 text-lg">
                 Gérez vos événements en toute simplicité. Inscrivez-vous, suivez vos participants et créez des expériences mémorables.
             </p>
-            <a href="?view=events" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 inline-flex items-center">
+            <a href="?view=create" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 inline-flex items-center">
                 Commencer une démo
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />

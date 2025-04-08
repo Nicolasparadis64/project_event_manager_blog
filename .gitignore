@@ -3,3 +3,36 @@ back/
 
 # Ignorer le fichier .htaccess
 .htaccess
+
+# Ignorer les fichiers d'environnement
+.env
+.env.local
+.env.*.local
+
+# Ignorer les dépendances
+node_modules/
+vendor/
+
+# Ignorer les fichiers de configuration sensibles
+back/config.php
+
+# Ignorer les fichiers de logs
+*.log
+
+# Ignorer les fichiers de cache
+*.cache
+
+# Ignorer les fichiers de sauvegarde
+*.bak
+*.save
+*.swp
+*.swo
+
+# Ignorer les fichiers de système
+.DS_Store
+Thumbs.db
+
+# Ignorer le dossier dist
+dist/
+
+

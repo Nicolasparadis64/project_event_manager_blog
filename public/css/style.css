@@ -12,7 +12,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(/project_event_manager_blog/public/image/conference2.jpg);
+  background-image: url('../image/conference2.jpg');
+  filter: brightness(0.7);
 }
 
 .header-image::before {

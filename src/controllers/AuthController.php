@@ -38,7 +38,7 @@ class AuthController
                 $error = 'Nom ou mot de passe invalide';
             }
         }
-        include $this->config['path']['views'] . '/access/login.php';
+        include $this->config['paths']['views'] . '/access/login.php';
     }
 
     public function register($pdo)
@@ -86,7 +86,7 @@ class AuthController
             }
         }
     
-        include $this->config['path']['views'] . '/access/register.php';
+        include $this->config['paths']['views'] . '/access/register.php';
     }
     public function logout($pdo)
     {

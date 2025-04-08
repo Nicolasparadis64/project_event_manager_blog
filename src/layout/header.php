@@ -7,9 +7,10 @@
     <title>Gestionnaire d'événements</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="public/js/script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="/project_event_manager_blog/public/css/style.css" rel="stylesheet">
+    <link href="public/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
 
@@ -56,7 +57,7 @@
                         <div class="flex justify-center flex-row mr-3">
                             <span class="text-gray-800 mr-2"><?= htmlspecialchars($_SESSION['user']['nom']) ?></span>
                             <?php if ($adminController->isAdmin()): ?>
-                                <img src="/project_event_manager_blog/public/image/crown.png" alt="Example Image">
+                                <img src="public/image/crown.png" alt="Example Image">
                             <?php endif; ?>
                         </div>
                         <a href="?view=logout" class="text-red-600 hover:text-red-800">Déconnexion</a>
@@ -79,7 +80,7 @@
                     <div class="flex items-center py-2">
                         <span class="text-gray-800 mr-2"><?= htmlspecialchars($_SESSION['user']['nom']) ?></span>
                         <?php if ($adminController->isAdmin()): ?>
-                            <img src="/project_event_manager_blog/public/image/crown.png" alt="Admin Icon">
+                            <img src="public/image/crown.png" alt="Admin Icon">
                         <?php endif; ?>
                     </div>
                     <a href="?view=logout" class="block py-2 text-red-600 hover:text-red-800">Déconnexion</a>
@@ -90,6 +91,8 @@
         </div>
     </nav>
 
-  
+    <!-- Le reste du contenu de la page sera inclus ici -->
+
+    <script src="public/js/script.js"></script>
 </body>
 </html>

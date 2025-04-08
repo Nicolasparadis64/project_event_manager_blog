@@ -2,7 +2,7 @@
     <!-- Image à gauche - prend la moitié de l'écran sur desktop -->
     <div class="w-full lg:w-1/2 relative">
         <div class="w-full h-full bg-cover bg-center absolute" 
-             style="background-image: url(/project_event_manager_blog/public/image/conference2.jpg); filter: brightness(0.7);">
+             style="background-image: url(../../public/image/conference2.jpg); filter: brightness(0.7);">
         </div>
     </div>
     

@@ -22,7 +22,8 @@ try {
     return $pdo; // Retourner la connexion PDO
     
 } catch (PDOException $e) {
-    error_log($e->getMessage(), 3, '/path/to/logfile.log');
+    // Utiliser error_log() avec la destination par défaut (généralement le fichier d'erreur PHP)
+    error_log("Erreur de connexion à la base de données: " . $e->getMessage());
     echo "Une erreur est survenue. Veuillez réessayer plus tard.";
     die(); // Arrêter l'exécution si la connexion échoue
 }

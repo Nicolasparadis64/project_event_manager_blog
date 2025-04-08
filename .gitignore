@@ -1,5 +1,6 @@
-# Ignorer le dossier back
-back/
+# Ignorer le dossier back, mais pas db.php
+back/*
+!back/db.php
 
 # Ignorer le fichier .htaccess
 .htaccess

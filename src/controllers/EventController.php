@@ -34,7 +34,7 @@ class EventController
             die('Erreur lors de la récupération des événements : ' . $e->getMessage());
         }
     
-        include $this->config['paths']['views'] . '/events/view.php';
+        include $this->config['path']['views'] . '/events/view.php';
     }
     
     private function handleImageUpload($file) {
@@ -169,7 +169,7 @@ class EventController
                 echo 'Tous les champs sont requis.';
             }
         }
-        include $this->config['paths']['views'] . '/admin/create.php';
+        include $this->config['path']['views'] . '/admin/create.php';
     }
 
     public function deleteEvent($pdo, $adminController)
@@ -376,7 +376,7 @@ class EventController
                     $event = $stmt->fetch(PDO::FETCH_ASSOC);
 
                     if ($event) {
-                        include $this->config['paths']['views'] . '/admin/update.php';
+                        include $this->config['path']['views'] . '/admin/update.php';
                         return;
                     } else {
                         echo 'Événement introuvable.';

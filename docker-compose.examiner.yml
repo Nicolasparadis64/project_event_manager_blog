@@ -1,0 +1,41 @@
+services:
+  web:
+    image: nicolasparadis64/event-manager-web:latest
+    container_name: php_web
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=nouvel_utilisateur
+      - MYSQL_PASSWORD=mot_de_passe
+      - MYSQL_DATABASE=event_manager
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=event_manager
+      - MYSQL_USER=nouvel_utilisateur
+      - MYSQL_PASSWORD=mot_de_passe
+      - MYSQL_ROOT_PASSWORD=root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    depends_on:
+      - db
+
+volumes:
+  mysql_data: 

@@ -11,7 +11,7 @@ Ce projet est une application web de gestion d'événements construite avec PHP,
 
 1. Clonez ce dépôt :
    ```bash
-   git clone https://github.com/Nicolasparadis64/project_event_manager_blog]
+   git clone https://github.com/Nicolasparadis64/project_event_manager_blog
    cd project_event_manager_blog
    ```
 

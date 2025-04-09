@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+
+# Ne pas appliquer de règles aux fichiers et dossiers existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rediriger toutes les autres requêtes vers index.php
+RewriteRule ^ index.php [L]
+
+# Désactiver l'affichage des répertoires
+Options -Indexes 

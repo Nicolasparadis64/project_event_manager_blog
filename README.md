@@ -85,7 +85,7 @@ Ce projet est une application web de gestion d'événements construite avec PHP,
   - Email : admin@admin.com
   - Mot de passe : admin
 - Utilisateur test :
-  - Email : userTest@gmail.com
+  - Email : bob
   - Mot de passe : test
 
 ## Fonctionnalités

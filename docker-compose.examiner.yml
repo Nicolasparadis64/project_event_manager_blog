@@ -7,10 +7,10 @@ services:
     depends_on:
       - db
     environment:
-      - MYSQL_HOST=db
-      - MYSQL_USER=nouvel_utilisateur
-      - MYSQL_PASSWORD=mot_de_passe
-      - MYSQL_DATABASE=event_manager
+      - MYSQL_HOST=${DB_HOST}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
 
   db:
     image: mysql:8.0
@@ -18,10 +18,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_DATABASE=event_manager
-      - MYSQL_USER=nouvel_utilisateur
-      - MYSQL_PASSWORD=mot_de_passe
-      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
@@ -32,8 +32,8 @@ services:
     ports:
       - "8080:80"
     environment:
-      - PMA_HOST=db
-      - PMA_PORT=3306
+      - PMA_HOST=${DB_HOST}
+      - PMA_PORT=${DB_PORT}
     depends_on:
       - db
 

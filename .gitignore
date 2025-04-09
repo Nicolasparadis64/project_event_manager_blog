@@ -1,39 +1,13 @@
-# Ignorer le dossier back, mais pas db.php
-back/*
-!back/db.php
 
-# Ignorer le fichier .htaccess
-.htaccess
-
-# Ignorer les fichiers d'environnement
+# Fichiers sensibles
 .env
-.env.local
-.env.*.local
 
-# Ignorer les dépendances
+# Dépendances
 node_modules/
-vendor/
 
-# Ignorer les fichiers de configuration sensibles
-back/config.php
-
-# Ignorer les fichiers de logs
+# Fichiers temporaires
 *.log
-
-# Ignorer les fichiers de cache
-*.cache
-
-# Ignorer les fichiers de sauvegarde
-*.bak
-*.save
-*.swp
-*.swo
-
-# Ignorer les fichiers de système
+*.tmp
 .DS_Store
-Thumbs.db
-
-# Ignorer le dossier dist
-dist/
 
 
